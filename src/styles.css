@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
+
+:root {
+  --gold: #ffd700;
+  --box-shadow: 3px 2px 10px #a9a7a7;
+}
+
+body {
+  height: 100vh;
+  background-color: #f7f7f7;
+  font-family: "Lato", sans-serif;
+  margin: 0;
+}
+
+.header {
+  letter-spacing: 0.5px;
+}
+
+.text-gold {
+  color: var(--gold);
+}
