@@ -5,7 +5,7 @@
   </button>
 </div>
 
-<div *ngIf="addWindowOpen" class="row">
+<div *ngIf="addWindowOpen" class="row mb-5">
   <div class="col-4">
     <div class="d-flex justify-content-between mt-2">
       <p class="lead align-self-center my-0">Image:</p>
@@ -65,7 +65,12 @@
 
 <ng-template #closeAddWindow>
   <div class="text-start mb-5">
-    <button class="btn btn-danger" type="button" (click)="addWindowClicked()">
+    <button
+      [disabled]="uploadPending"
+      class="btn btn-danger"
+      type="button"
+      (click)="addWindowClicked()"
+    >
       <i class="fa-solid fa-xmark me-2"></i>
       Close
     </button>

@@ -1,5 +1,6 @@
 <div class="container py-5 h-100">
   <app-header></app-header>
-  <app-add-image-form></app-add-image-form>
+  <app-add-image-form (onFileUpload)="onImageAdd($event)"></app-add-image-form>
   <app-searchbar></app-searchbar>
+  <app-image-gallery></app-image-gallery>
 </div>

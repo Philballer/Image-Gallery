@@ -1,1 +1,10 @@
-<p>image-gallery works!</p>
+<div class="row mt-2 row-gap-4 p-3 ps-5 pe-0">
+  <div *ngFor="let image of images" class="col-3">
+    <app-single-image
+      [image]="image"
+      (onDelete)="onImageDelete($event)"
+    ></app-single-image>
+  </div>
+</div>
+
+<p *ngIf="!images" class="fs-5 my-5 text-center">No images uploaded...</p>
