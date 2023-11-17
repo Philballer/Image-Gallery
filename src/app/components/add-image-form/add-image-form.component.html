@@ -1,1 +1,73 @@
-<p>add-image-form works!</p>
+<div *ngIf="!addWindowOpen; else closeAddWindow" class="text-end mb-4">
+  <button class="btn btn-success" type="button" (click)="addWindowClicked()">
+    <i class="fa-solid fa-plus me-2"></i>
+    Add Images
+  </button>
+</div>
+
+<div *ngIf="addWindowOpen" class="row">
+  <div class="col-4">
+    <div class="d-flex justify-content-between mt-2">
+      <p class="lead align-self-center my-0">Image:</p>
+      <input
+        #imgInput
+        type="file"
+        accept="image/*"
+        class="form-control w-75 image-input"
+        [class.image-input]="errorMsg"
+        placeholder="Username"
+        aria-label="Username"
+        aria-describedby="basic-addon1"
+        (change)="fileSelected($event)"
+      />
+    </div>
+    <p *ngIf="errorMsg" class="small text-end text-danger mb-3 my-2 px-4">
+      <i class="fa-solid fa-circle-info fa-beat me-2"></i>
+      Please only upload images
+    </p>
+
+    <div class="d-flex justify-content-between mt-2">
+      <p class="lead align-self-center my-0">Tag:</p>
+      <input
+        type="text"
+        class="form-control w-75"
+        placeholder="Add a tag to your image..."
+        [class.image-input]="tagErrorMessage"
+        aria-label="Username"
+        aria-describedby="basic-addon1"
+        (input)="onTagEntry(imageTag.value)"
+        #imageTag
+      />
+    </div>
+    <p
+      *ngIf="tagErrorMessage"
+      class="small text-end text-danger mb-3 my-2 px-3"
+    >
+      <i class="fa-solid fa-circle-info fa-beat me-2"></i>
+      Maximum number of characters exceeded: 8
+    </p>
+
+    <div class="text-end mt-3">
+      <button
+        (click)="submit()"
+        class="btn btn-success"
+        type="button"
+        [disabled]="uploadDisabled || tagErrorMessage || errorMsg"
+      >
+        <ng-container *ngIf="uploadPending">
+          <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </ng-container>
+        Upload
+      </button>
+    </div>
+  </div>
+</div>
+
+<ng-template #closeAddWindow>
+  <div class="text-start mb-5">
+    <button class="btn btn-danger" type="button" (click)="addWindowClicked()">
+      <i class="fa-solid fa-xmark me-2"></i>
+      Close
+    </button>
+  </div>
+</ng-template>
