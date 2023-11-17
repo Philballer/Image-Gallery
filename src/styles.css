@@ -7,6 +7,11 @@
   --box-shadow-red: 1px 1px 6px #cf3232;
 }
 
+p,
+div {
+  margin: 0;
+}
+
 body {
   height: 100vh;
   background-color: #f7f7f7;
@@ -33,4 +38,13 @@ body {
 .image-input:focus {
   border: 3px solid var(--red);
   box-shadow: var(--box-shadow-red);
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.underline-primary:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }

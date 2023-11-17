@@ -8,7 +8,7 @@ import { AddImageFormComponent } from './components/add-image-form/add-image-for
 import { SearchbarComponent } from './components/searchbar/searchbar.component';
 import { ImageGalleryComponent } from './components/image-gallery/image-gallery.component';
 import { SingleImageComponent } from './components/single-image/single-image.component';
-import { ImageCropperModule } from 'ngx-image-cropper';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     ImageGalleryComponent,
     SingleImageComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, ImageCropperModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

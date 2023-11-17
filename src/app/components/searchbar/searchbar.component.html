@@ -1,1 +1,27 @@
-<p>searchbar works!</p>
+<div class="d-flex justify-content-center h-25 align-items-end">
+  <div class="mb-3 w-50 d-flex align-items-center">
+    <input
+      #searchInput
+      type="text"
+      class="form-control"
+      aria-label="Amount (to the nearest dollar)"
+      placeholder="Search though the tags..."
+      [value]="searchValue || ''"
+      (input)="onInputEntry(searchInput.value)"
+    />
+
+    <i
+      *ngIf="!searchValue; else clear"
+      class="fa-solid fs-3 ms-3 fa-magnifying-glass fa-shake cursor-pointer"
+    ></i>
+  </div>
+</div>
+
+<ng-template #clear>
+  <p
+    (click)="clearSearchValue()"
+    class="ms-3 lead text-primary text-underline underline-primary"
+  >
+    clear
+  </p>
+</ng-template>
