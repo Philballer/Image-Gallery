@@ -10,6 +10,9 @@ import { ImageGalleryComponent } from './components/image-gallery/image-gallery.
 import { SingleImageComponent } from './components/single-image/single-image.component';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { DeleteVerificationComponent } from './components/delete-verification/delete-verification.component';
+import { ImageViewerComponent } from './components/image-viewer/image-viewer.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +23,10 @@ import { FooterComponent } from './components/footer/footer.component';
     ImageGalleryComponent,
     SingleImageComponent,
     FooterComponent,
+    DeleteVerificationComponent,
+    ImageViewerComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, NgbModalModule],
   providers: [],
   bootstrap: [AppComponent],
 })

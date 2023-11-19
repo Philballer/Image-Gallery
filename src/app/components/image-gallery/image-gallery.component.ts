@@ -10,6 +10,9 @@ export class ImageGalleryComponent {
   @Input()
   public images: IPicture[] | undefined;
 
+  @Input()
+  public searchIsActive: boolean = false;
+
   @Output()
   public imageClicked = new EventEmitter<IPicture>();
 

@@ -53,10 +53,12 @@
         (click)="submit()"
         class="btn btn-success"
         type="button"
-        [disabled]="uploadDisabled || tagErrorMessage || errorMsg"
+        [disabled]="
+          uploadDisabled || tagErrorMessage || errorMsg || uploadPending
+        "
       >
         <ng-container *ngIf="uploadPending">
-          <i class="fa-solid fa-circle-notch fa-spin"></i>
+          <i class="fa-solid fa-circle-notch fa-spin me-1"></i>
         </ng-container>
         Upload
       </button>

@@ -19,10 +19,13 @@ export class SearchbarComponent {
     this.searchValue = input.toString().trim();
     if (this.searchValue.length > 0) {
       this.onTagSearch.emit(this.searchValue);
+    } else {
+      this.onTagSearch.emit('empty-search');
     }
   }
 
   public clearSearchValue(): void {
+    this.onTagSearch.emit('empty-search');
     this.searchValue = undefined;
   }
 }

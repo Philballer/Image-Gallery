@@ -8,7 +8,20 @@
   </div>
 </div>
 
-<p *ngIf="!images || images.length < 1" class="fs-5 my-5 mt-0 text-center">
+<p
+  *ngIf="!searchIsActive && (!images || images.length < 1); else notFound"
+  class="fs-5 my-5 mt-0 text-center"
+>
   No images uploaded...
   <i class="fa-solid fa-hippo fa-bounce ms-2"></i>
 </p>
+
+<ng-template #notFound>
+  <p
+    *ngIf="searchIsActive && (!images || images.length < 1)"
+    class="fs-5 my-5 mt-0 text-center"
+  >
+    No images Found...
+    <i class="fa-solid fa-face-sad-tear fa-shake ms-2"></i>
+  </p>
+</ng-template>

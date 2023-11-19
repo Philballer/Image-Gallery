@@ -1,7 +1,4 @@
-<div
-  *ngIf="!images || images.length >= 1"
-  class="d-flex justify-content-center mt-5"
->
+<div class="d-flex justify-content-center mt-5">
   <div class="mb-3 w-50 d-flex align-items-center">
     <input
       #searchInput
@@ -15,7 +12,7 @@
 
     <i
       *ngIf="!searchValue; else clear"
-      class="fa-solid fs-3 ms-3 fa-magnifying-glass fa-shake cursor-pointer"
+      class="fa-solid fs-3 ms-3 fa-magnifying-glass cursor-pointer"
     ></i>
   </div>
 </div>

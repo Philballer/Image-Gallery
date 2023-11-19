@@ -5,6 +5,8 @@ import {
   EventEmitter,
   ViewChild,
   ElementRef,
+  OnChanges,
+  SimpleChanges,
 } from '@angular/core';
 import { IPicture } from 'src/app/interfaces/IPicture';
 import { v4 as uuid } from 'uuid';
@@ -14,7 +16,7 @@ import { v4 as uuid } from 'uuid';
   templateUrl: './add-image-form.component.html',
   styleUrls: ['./add-image-form.component.css'],
 })
-export class AddImageFormComponent {
+export class AddImageFormComponent implements OnChanges {
   @ViewChild('imgInput', { static: false })
   public imageInputElement: ElementRef | undefined;
 
@@ -40,6 +42,11 @@ export class AddImageFormComponent {
 
   public selectedFile: File | undefined;
 
+  public ngOnChanges(changes: SimpleChanges): void {
+    if (changes.uploadPending !== undefined) {
+    }
+  }
+
   public addWindowClicked(): void {
     this.addWindowOpen = !this.addWindowOpen;
     this.clearMemory();
@@ -64,6 +71,7 @@ export class AddImageFormComponent {
     // image validation
     if (fileType.match(/image\/*/)) {
       this.selectedFile = file;
+      this.imageTagElement?.nativeElement.focus();
     } else {
       this.errorMsg = true;
     }
@@ -115,5 +123,6 @@ export class AddImageFormComponent {
     this.errorMsg = false;
     this.tagErrorMessage = false;
     this.selectedFile = undefined;
+    this.imageTagElement?.nativeElement.blur();
   }
 }
