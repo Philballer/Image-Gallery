@@ -37,6 +37,7 @@
         aria-label="Username"
         aria-describedby="basic-addon1"
         (input)="onTagEntry(imageTag.value)"
+        (keydown.enter)="submit()"
       />
     </div>
     <p

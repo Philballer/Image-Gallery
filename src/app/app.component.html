@@ -1,7 +1,10 @@
 <div class="container py-5 h-100">
   <app-header></app-header>
   <app-add-image-form (onFileUpload)="onImageAdd($event)"></app-add-image-form>
-  <app-searchbar></app-searchbar>
+  <app-searchbar
+    [images]="images"
+    (onTagSearch)="onSearch($event)"
+  ></app-searchbar>
   <app-image-gallery
     [images]="images"
     (onDelete)="onImageDelete($event)"

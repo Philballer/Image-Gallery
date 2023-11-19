@@ -1,4 +1,5 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { IPicture } from 'src/app/interfaces/IPicture';
 
 @Component({
   selector: 'app-searchbar',
@@ -6,9 +7,13 @@ import { Component, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./searchbar.component.css'],
 })
 export class SearchbarComponent {
-  public searchValue: string | undefined;
+  @Input()
+  public images: IPicture[] | undefined;
 
+  @Output()
   public onTagSearch = new EventEmitter<string>();
+
+  public searchValue: string | undefined;
 
   public onInputEntry(input: string): void {
     this.searchValue = input.toString().trim();

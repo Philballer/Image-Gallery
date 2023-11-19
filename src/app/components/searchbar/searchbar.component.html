@@ -1,4 +1,7 @@
-<div class="d-flex justify-content-center mt-5">
+<div
+  *ngIf="!images || images.length >= 1"
+  class="d-flex justify-content-center mt-5"
+>
   <div class="mb-3 w-50 d-flex align-items-center">
     <input
       #searchInput

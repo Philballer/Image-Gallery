@@ -74,10 +74,10 @@ export class AddImageFormComponent {
 
   public submit(): void {
     if (
-      !this.uploadPending ||
-      !this.uploadDisabled ||
-      this.tagErrorMessage ||
-      this.errorMsg
+      !this.uploadPending &&
+      !this.uploadDisabled &&
+      !this.tagErrorMessage &&
+      !this.errorMsg
     ) {
       if (this.selectedFile && this.userTag) {
         this.onFileUpload.emit({
@@ -98,7 +98,7 @@ export class AddImageFormComponent {
   }
 
   public onTagEntry(input: string): void {
-    this.userTag = input.toString().trim();
+    this.userTag = input.toString().trim().toLowerCase();
 
     if (input.length > 8) {
       this.tagErrorMessage = true;
