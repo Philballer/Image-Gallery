@@ -21,9 +21,7 @@ export const readFileAndConvertToReadableImage = async (
 
     try {
       imageString = await readFile();
-    } catch (error) {
-      console.log('from file reader', error);
-    }
+    } catch (error) {}
   }
 
   return imageString || undefined;

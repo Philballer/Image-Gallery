@@ -1,1 +1,11 @@
-<p>image-viewer works!</p>
+<div *ngIf="image" class="p-1 border bg-dark position-relative">
+  <img class="img-fluid" [src]="image.viewableImageUrl" alt="" />
+  <div class="position-absolute top-0 p-4 w-100 h-100">
+    <p class="fs-3 d-flex justify-content-end">
+      <i
+        (click)="onIconClick()"
+        class="fa-solid h-0 text-secondary fa-circle-xmark icon"
+      ></i>
+    </p>
+  </div>
+</div>

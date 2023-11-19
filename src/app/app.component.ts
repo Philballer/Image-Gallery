@@ -44,7 +44,6 @@ export class AppComponent {
   }
 
   public onSearch(tag: string): void {
-    console.log(this.imagesBackup);
     this.searchIsActive = true;
 
     tag = tag.toLowerCase();
@@ -59,7 +58,6 @@ export class AppComponent {
   }
 
   public onOpenImage(image: IPicture): void {
-    console.log(image);
     this.openViewImageModal(image);
   }
 
@@ -83,5 +81,6 @@ export class AppComponent {
       size: 'xl',
       windowClass: 'centered-modal',
     });
+    modalRef.componentInstance.image = image;
   }
 }
