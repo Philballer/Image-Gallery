@@ -1,22 +1,33 @@
 <div
-  *ngIf="image"
+  *ngIf="imageMetadata && viewableImageURL"
   (mouseenter)="isHovered = true"
   (mouseleave)="isHovered = false"
   class="w-75 position-relative"
 >
-  <img src="{{ image.image }}" class="img-fluid single-img" alt="" />
+  <img [src]="viewableImageURL" class="img-fluid single-img" alt="" />
 
   <div
     *ngIf="isHovered"
     class="position-absolute top-0 left-0 h-100 w-100 single-img d-flex justify-content-start align-items-end p-2"
   >
-    <p class="small p-2 border-radius bg-dark text-light">{{ image.tag }}</p>
+    <p class="small p-2 border-radius bg-dark text-light">
+      {{ imageMetadata.tag }}
+    </p>
   </div>
 
   <div
     *ngIf="isHovered"
-    class="position-absolute top-0 left-0 h-100 w-100 single-img d-flex justify-content-end p-2"
+    class="position-absolute top-0 left-0 h-100 w-100 d-flex justify-content-end p-2"
   >
-    <i (click)="testRun()" class="fa-solid text-light fa-circle-xmark icon"></i>
+    <i
+      (click)="deleteImage()"
+      class="fa-solid h-0 text-secondary fa-circle-xmark icon"
+    ></i>
   </div>
+
+  <div
+    *ngIf="isHovered"
+    class="w-75 cursor-pointer position-absolute h-100 top-0"
+    (click)="openImage()"
+  ></div>
 </div>

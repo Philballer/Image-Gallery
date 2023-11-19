@@ -2,5 +2,9 @@
   <app-header></app-header>
   <app-add-image-form (onFileUpload)="onImageAdd($event)"></app-add-image-form>
   <app-searchbar></app-searchbar>
-  <app-image-gallery></app-image-gallery>
+  <app-image-gallery
+    [images]="images"
+    (onDelete)="onImageDelete($event)"
+    (imageClicked)="onOpenImage($event)"
+  ></app-image-gallery>
 </div>

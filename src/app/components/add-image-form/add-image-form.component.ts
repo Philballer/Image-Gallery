@@ -56,6 +56,9 @@ export class AddImageFormComponent {
     this.clearMemory();
 
     const file = event.target.files[0];
+    if (!file) {
+      return;
+    }
     const fileType = file.type;
 
     // image validation

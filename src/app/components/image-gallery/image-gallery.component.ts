@@ -10,12 +10,16 @@ export class ImageGalleryComponent {
   @Input()
   public images: IPicture[] | undefined;
 
-  public numbers = [1, 2, 3, 4, 5, 6, 7, 89, 9, 0];
+  @Output()
+  public imageClicked = new EventEmitter<IPicture>();
 
   @Output()
   public onDelete = new EventEmitter<string>();
 
   public onImageDelete(id: string): void {
     this.onDelete.emit(id);
+  }
+  public onImageClick(image: IPicture): void {
+    this.imageClicked.emit(image);
   }
 }

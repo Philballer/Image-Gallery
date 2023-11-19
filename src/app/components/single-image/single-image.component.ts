@@ -1,4 +1,12 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
+import { readFileAndConvertToReadableImage } from 'src/app/helpers/shared';
 import { IPicture } from 'src/app/interfaces/IPicture';
 
 @Component({
@@ -6,22 +14,42 @@ import { IPicture } from 'src/app/interfaces/IPicture';
   templateUrl: './single-image.component.html',
   styleUrls: ['./single-image.component.css'],
 })
-export class SingleImageComponent {
+export class SingleImageComponent implements OnChanges {
   @Input()
-  public image: IPicture | undefined;
+  public imageMetadata: IPicture | undefined;
 
   @Output()
   public onDelete = new EventEmitter<string>();
 
+  @Output()
+  public onImageClick = new EventEmitter<IPicture>();
+
+  public viewableImageURL: string | undefined;
+
   public isHovered = false;
 
-  public testRun(): void {
-    console.log('icon clicked');
+  public async ngOnChanges(changes: SimpleChanges): Promise<void> {
+    if (changes.imageMetadata !== undefined) {
+      if (this.imageMetadata) {
+        this.viewableImageURL = await readFileAndConvertToReadableImage(
+          this.imageMetadata.image
+        );
+      }
+    }
   }
 
   public deleteImage(): void {
-    if (this.image) {
-      this.onDelete.emit(this.image.id);
+    if (this.imageMetadata) {
+      this.onDelete.emit(this.imageMetadata.id);
+    }
+  }
+
+  public openImage(): void {
+    if (this.imageMetadata) {
+      this.onImageClick.emit({
+        ...this.imageMetadata,
+        viewableImageUrl: this.viewableImageURL,
+      });
     }
   }
 }

@@ -10,8 +10,14 @@ export class AppComponent {
   public images: IPicture[] = [];
 
   public onImageAdd(image: IPicture): void {
-    console.log('Image-metadata', image);
     this.images.push(image);
-    console.log(this.images);
+  }
+
+  public onImageDelete(id: string): void {
+    console.log(id);
+  }
+
+  public onOpenImage(image: IPicture): void {
+    console.log(image);
   }
 }
