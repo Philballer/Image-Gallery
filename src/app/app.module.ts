@@ -9,6 +9,7 @@ import { SearchbarComponent } from './components/searchbar/searchbar.component';
 import { ImageGalleryComponent } from './components/image-gallery/image-gallery.component';
 import { SingleImageComponent } from './components/single-image/single-image.component';
 import { FormsModule } from '@angular/forms';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { FormsModule } from '@angular/forms';
     SearchbarComponent,
     ImageGalleryComponent,
     SingleImageComponent,
+    FooterComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
