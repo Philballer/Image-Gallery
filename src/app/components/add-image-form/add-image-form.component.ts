@@ -1,4 +1,11 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 import { IPicture } from 'src/app/interfaces/IPicture';
 import { v4 as uuid } from 'uuid';
 
@@ -8,6 +15,12 @@ import { v4 as uuid } from 'uuid';
   styleUrls: ['./add-image-form.component.css'],
 })
 export class AddImageFormComponent {
+  @ViewChild('imgInput', { static: false })
+  public imageInputElement: ElementRef | undefined;
+
+  @ViewChild('imageTag', { static: false })
+  public imageTagElement: ElementRef | undefined;
+
   @Input()
   public uploadPending = false;
 
@@ -31,6 +44,11 @@ export class AddImageFormComponent {
     this.addWindowOpen = !this.addWindowOpen;
     this.clearMemory();
     this.userTag = undefined;
+    setTimeout(() => {
+      if (this.addWindowOpen && this.imageInputElement) {
+        this.imageInputElement.nativeElement.focus();
+      }
+    }, 200);
   }
 
   public fileSelected(event: any): void {
@@ -65,7 +83,13 @@ export class AddImageFormComponent {
           image: this.selectedFile,
         });
 
-        console.log(uuid());
+        //Empty the elements after upload and clear memory
+        if (this.imageInputElement && this.imageTagElement) {
+          this.imageInputElement.nativeElement.value = '';
+          this.imageTagElement.nativeElement.value = '';
+          this.uploadDisabled = true;
+          this.clearMemory();
+        }
       }
     }
   }

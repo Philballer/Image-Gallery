@@ -29,6 +29,7 @@
     <div class="d-flex justify-content-between mt-2">
       <p class="lead align-self-center my-0">Tag:</p>
       <input
+        #imageTag
         type="text"
         class="form-control w-75"
         placeholder="Add a tag to your image..."
@@ -36,7 +37,6 @@
         aria-label="Username"
         aria-describedby="basic-addon1"
         (input)="onTagEntry(imageTag.value)"
-        #imageTag
       />
     </div>
     <p
